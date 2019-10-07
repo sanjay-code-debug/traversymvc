@@ -4,14 +4,16 @@
  * Creates URL & loads core controller
  * URL Format: /controller/method/params
  */
-class Core {
+class Core 
+{
     protected $currentControllerName = 'Pages';
     protected $currentMethodName = 'index';
     protected $params = [];
     protected $currentController;
     protected $currentMethod;
 
-    public function __construct() {
+    public function __construct() 
+    {
         // print_r($this->getUrl());
 
         $url = $this->getUrl();
@@ -34,7 +36,8 @@ class Core {
         $this->currentController = new $this->currentControllerName;
     }
 
-    public function getUrl() {
+    public function getUrl() 
+    {
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);

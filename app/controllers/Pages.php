@@ -1,6 +1,8 @@
 <?php
-class Pages {
-    public function __construct() {
+class Pages 
+{
+    public function __construct() 
+    {
         echo 'Pages loaded';
     }
 }
