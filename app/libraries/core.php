@@ -10,7 +10,6 @@ class Core
     protected $currentMethodName = 'index';
     protected $params = [];
     protected $currentController;
-    protected $currentMethod;
 
     public function __construct() 
     {
@@ -34,6 +33,25 @@ class Core
 
         // Instantiate controller class
         $this->currentController = new $this->currentControllerName;
+
+        // Check for second part of the URL
+        if (isset($url[1])) {
+            // Check to see if method exists in controller
+            if (method_exists($this->currentController, $url[1])) {
+                $this->currentMethodName = $url[1];
+            }
+            // Unset 1 Index
+            unset($url[1]);
+        }
+        
+        // Get params
+        $this->params = $url  ? array_values($url) : [];
+
+        // Call a callback with array of params
+        call_user_func_array([
+            $this->currentController,
+            $this->currentMethodName
+        ], $this->params);
     }
 
     public function getUrl() 
