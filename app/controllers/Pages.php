@@ -1,5 +1,5 @@
 <?php
-class Pages 
+class Pages extends Controller
 {
     public function __construct() 
     {
@@ -7,7 +7,7 @@ class Pages
     }
 
     public function index() {
-        
+
     }
 
     public function about($id) 
