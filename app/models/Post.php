@@ -7,4 +7,12 @@ class Post
     {
         $this->db = new Database;
     }
+
+    public function getPosts()
+    {
+        $this->db->query("SELECT * FROM posts");
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
 }
