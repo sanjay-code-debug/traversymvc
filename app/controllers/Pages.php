@@ -16,6 +16,9 @@ class Pages extends Controller
 
     public function about() 
     {
-        $this->view('pages/about');
+        $data = [
+            'title' => 'About us'
+        ];
+        $this->view('pages/about', $data);
     }
 }
